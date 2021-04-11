@@ -12,7 +12,10 @@ use Yii;
  * @property string $asal
  * @property string $tujuan
  * @property int $id_jadwal
- * @property string $grid_rute
+ * @property float $latitude_asal
+ * @property float $longitude_asal
+ * @property float $latitude_tujuan
+ * @property float $longitude_tujuan
  * @property string $status
  * @property string $created_at
  * @property string $updated_at
@@ -36,11 +39,12 @@ class Trayek extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama_trayek', 'asal', 'tujuan', 'id_jadwal', 'grid_rute', 'status'], 'required'],
+            [['nama_trayek', 'asal', 'tujuan', 'id_jadwal', 'latitude_asal', 'longitude_asal', 'latitude_tujuan', 'longitude_tujuan', 'status'], 'required'],
             [['id_jadwal'], 'integer'],
+            [['latitude_asal', 'longitude_asal', 'latitude_tujuan', 'longitude_tujuan'], 'number'],
             [['status'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['nama_trayek', 'asal', 'tujuan', 'grid_rute'], 'string', 'max' => 30],
+            [['nama_trayek', 'asal', 'tujuan'], 'string', 'max' => 30],
             [['id_jadwal'], 'exist', 'skipOnError' => true, 'targetClass' => Jadwal::className(), 'targetAttribute' => ['id_jadwal' => 'id_jadwal']],
         ];
     }
@@ -56,7 +60,10 @@ class Trayek extends \yii\db\ActiveRecord
             'asal' => 'Asal',
             'tujuan' => 'Tujuan',
             'id_jadwal' => 'Id Jadwal',
-            'grid_rute' => 'Grid Rute',
+            'latitude_asal' => 'Latitude Asal',
+            'longitude_asal' => 'Longitude Asal',
+            'latitude_tujuan' => 'Latitude Tujuan',
+            'longitude_tujuan' => 'Longitude Tujuan',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -68,7 +75,7 @@ class Trayek extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getTbPerusahaans()
+    public function getTbPerusahaan()
     {
         return $this->hasMany(Perusahaan::className(), ['id_trayek' => 'id_trayek']);
     }

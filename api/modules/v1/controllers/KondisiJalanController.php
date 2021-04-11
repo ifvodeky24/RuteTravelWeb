@@ -20,7 +20,7 @@ class KondisiJalanController extends Controller
             $sql = "SELECT * FROM tb_kondisi_jalan 
             WHERE tb_kondisi_jalan.id_kondisi_jalan = '$id_kondisi_jalan'";
 
-            $response['kondisijalan'] = Yii::$app->db->createCommand($sql)->queryAll();
+            $response['kondisi_jalan'] = Yii::$app->db->createCommand($sql)->queryAll();
         }
 
         return $response;
@@ -52,7 +52,7 @@ class KondisiJalanController extends Controller
 			// select * from tb_produk berdasarkan nama produk
 			$data = "SELECT * FROM tb_kondisi_jalan WHERE nama_lokasi LIKE '%".$query."%'";
 
-			$response['kondisijalan'] = Yii::$app->db->createCommand($data)->queryAll();
+			$response['kondisi_jalan'] = Yii::$app->db->createCommand($data)->queryAll();
 		}
 
 		return $response;

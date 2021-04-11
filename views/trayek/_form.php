@@ -23,10 +23,16 @@ use app\models\Jadwal;
 
     <?php
     $jadwal = ArrayHelper::map(Jadwal::find()->all(), 'id_jadwal', 'jam', 'hari');
-    echo $form->field($model, 'id_jadwal')->dropDownList($jadwal, ['prompt' => 'Pilih Jadwal....'])->label('Nama Trayek');
+    echo $form->field($model, 'id_jadwal')->dropDownList($jadwal, ['prompt' => 'Pilih Jadwal....'])->label('Jadwal Keberangkatan');
     ?>
 
-    <?= $form->field($model, 'grid_rute')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'latitude_asal')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'longitude_asal')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'latitude_tujuan')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'longitude_tujuan')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([ 'Aktif' => 'Aktif', 'Tidak Aktif' => 'Tidak Aktif', ], ['prompt' => '']) ?>
 

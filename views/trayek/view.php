@@ -59,7 +59,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $sql['hari'];
                 }
             ],
-            'grid_rute',
+            'latitude_asal',
+            'longitude_asal',
+            'latitude_tujuan',
+            'longitude_tujuan',
             'status',
             'created_at',
             'updated_at',
